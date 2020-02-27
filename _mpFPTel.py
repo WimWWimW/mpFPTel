@@ -36,9 +36,8 @@ import _thread as thread
 import telnet
 import pyftpdlib
 from logging import NOTSET, DEBUG, INFO, WARNING, ERROR, FATAL
-from mpFTP import AnonAuthorizer, MPFS, MPFTPHandler
+from mpFTP import AnonAuthorizer, MPFS, MPFTPHandler, MPFTPServer
 from pyBoardEx import Microterm
-from pyftpdlib import servers
 
 # configuration:
 host_port           = ("localhost", 21)
@@ -71,5 +70,5 @@ if __name__ == '__main__':
         telnet.terminal     = board
         thread.start_new_thread(telnet.start, ())
         
-    server = servers.FTPServer(host_port, handler)
+    server = MPFTPServer(host_port, handler)
     server.serve_forever()

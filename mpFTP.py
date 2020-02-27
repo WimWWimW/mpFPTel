@@ -7,6 +7,7 @@ import inspect
 from functools import partial
 import posixpath
 from mpError import ResourceNotFound
+from pyftpdlib.servers import FTPServer
 
 
 class IndirectFile(BytesIO):
@@ -323,6 +324,25 @@ class MPFTPHandler(FTPHandler):
     
     abstracted_fs   = MPFS
         
+
+class MPFTPServer(FTPServer):
+    
+
+    def allowConnection(self, ip):
+        return ip == "127.0.0.2"
+    
+    
+    def handle_accepted(self, sock, addr):
+        """Called when remote client initiates a connection."""
+        handler = None
+        ip      = addr[0]
+        if self.allowConnection(ip):
+            super().handle_accepted(sock, addr)
+        else:
+            handler = self.handler(sock, self, ioloop=self.ioloop)
+            handler.respond("refused")
+            handler.close()
+
 
 
 if __name__ == '__main__':
