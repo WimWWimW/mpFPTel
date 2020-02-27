@@ -1,0 +1,42 @@
+from functools import partial
+from PyQt5.Qt import QAction, QKeySequence
+
+
+
+def _addCommand(owner, shortcut, hint):
+    action = QAction(hint, owner)
+    action.setShortcut(QKeySequence(shortcut))
+    return action
+
+
+def addCommands(owner):
+    addCommand = partial(_addCommand, owner)
+    actions = [
+              addCommand("F1", "Help"),
+              addCommand("F3", "View"),
+              addCommand("F4", "Edit"),
+              addCommand("F5", "Copy"),
+              addCommand("F6", "Move / Rename"),
+              addCommand("F7", "Make Dir"),
+              addCommand("F8", "Delete files"),
+              addCommand("F9", "selected size"),
+              addCommand("F10", "Quit"),
+              addCommand("F11", "Attributes"),
+              addCommand("F12", "Compression"),
+              addCommand("Alt+F2", "Select drive (right)"),
+              addCommand("Alt+F4", "Quit"),
+              addCommand("Alt+F9", "Create shortcut"),
+              addCommand("Alt+F10", "Exit Windows"),
+              addCommand("Shift+F4", "Edit in notepad++"),
+              addCommand("Shift+F5", "Encrypt files"),
+              addCommand("Shift+F6", "Decrypt files"),
+              addCommand("Shift+F8", "Delete to trash"),
+              addCommand("Backspace", "Up one directory"),
+              addCommand("Ctrl+F12", "Split files"),
+              addCommand("Tab", "Switch panels"),
+              addCommand("Ins", "Select"),
+              addCommand("Ctrl+R", "Reread directory"),
+              addCommand("Ctrl+S", "System information"),
+              addCommand("Ctrl+F", "Find files")
+              ]
+    return actions
