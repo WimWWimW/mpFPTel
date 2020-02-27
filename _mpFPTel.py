@@ -64,11 +64,14 @@ if __name__ == '__main__':
     handler             = MPFTPHandler if USE_MICROPROCESSOR else pyftpdlib.handlers.FTPHandler
     handler.authorizer  = authorizer
 
+    server = MPFTPServer(host_port, handler)
+
     if USE_MICROPROCESSOR:
         board               = Microterm()
         MPFS.board          = board
         telnet.terminal     = board
+        telnet.whiteList    = server.allowedIP
+        
         thread.start_new_thread(telnet.start, ())
         
-    server = MPFTPServer(host_port, handler)
     server.serve_forever()

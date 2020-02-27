@@ -327,9 +327,13 @@ class MPFTPHandler(FTPHandler):
 
 class MPFTPServer(FTPServer):
     
+    def __init__(self, address_or_socket, handler, ioloop=None, backlog=100, allowedIP = ["127.0.0.1"]):
+        super().__init__(address_or_socket, handler, ioloop, backlog)
+        self.allowedIP = allowedIP
+        
 
     def allowConnection(self, ip):
-        return ip == "127.0.0.2"
+        return ip in self.allowedIP
     
     
     def handle_accepted(self, sock, addr):
