@@ -14,7 +14,7 @@ the board's repl is possible.
 *    pyftpdlib:        https://github.com/giampaolo/pyftpdlib
 *    telnetlib3:       https://pypi.org/project/telnetlib3/ 
 
-#Using:
+# Using:
 Run this module; it will start both an FTP server and a 
     Telnet server. Start a client, such as WinSCP. 
     Connect to localhost (user: 'anonymous', pwd: '').
