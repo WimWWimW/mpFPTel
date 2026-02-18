@@ -3,7 +3,8 @@ FTP and Telnet server for local use (127.0.0.1) to provide access to MicroPython
 
 --------------------------------------------------------------
 This project is no longer relevant. Kindly refer fo e.g.
-Thonny (https://thonny.org/) for a more up to date approach.
+Thonny (https://github.com/thonny or https://thonny.org/) 
+for a more up to date approach.
 --------------------------------------------------------------
 
 
