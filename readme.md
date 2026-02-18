@@ -1,6 +1,12 @@
 # mpFPTel
 FTP and Telnet server for local use (127.0.0.1) to provide access to MicroPython microcontrollers that communicate over a COM:-port (Windows)
 
+--------------------------------------------------------------
+This project is no longer relevant. Kindly refer fo e.g.
+Thonny (https://thonny.org/) for a more up to date approach.
+--------------------------------------------------------------
+
+
 Thus, in combination with an external
 program such as WinSCP, a convenient graphical user interface
 is provided for file manegement on the board.
